@@ -30,5 +30,7 @@ Name of the town
 ```
 
 becomes
-
-![](material-town.png =600x)
+<style>
+img[alt=town] { width: 600px; }	
+</style>
+![town](material-town.png)
