@@ -1,5 +1,3 @@
-# Modeldoc
-
 Modeldoc is a tool for creating mkdoc files from Python models. Specifically, it parses  classes (generally [dataclass](https://docs.python.org/3/library/dataclasses.html) or [Pydantic](https://pydantic-docs.helpmanual.io/usage/models/)) from Python files, outputting .md files designed for [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 
 E.g.
@@ -33,4 +31,4 @@ Name of the town
 
 becomes
 
-![Material-town](material-town.png)
+![](material-town.png =600x)
