@@ -33,4 +33,4 @@ Name of the town
 
 becomes
 
-<img src="material-town.png" width=600/>
+![Material-town](material-town.png)
