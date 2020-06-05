@@ -77,6 +77,7 @@ const run = async () => {
 		let classes = await parseFile(Path.join(input, file))
 		classes.map(cl => allClasses.push(cl))
 	}
+	save(allClasses);
 	prepareDirectories(config);
 	establishRelationships(allClasses);
 	renderMarkdowns(allClasses, config)

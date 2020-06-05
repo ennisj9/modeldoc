@@ -73,12 +73,10 @@ const renderField = (field, filenames, config) => {
 		str += ' <span class="mkm-faint">:</span> ';
 		str += renderType(field.type, filenames, key, config)
 	}
-	str+= '\n';
-	let lines = renderInfo(field.tags, field.info)
+	str+= '\n'; 
+	let lines = renderInfo(field.tags, field.info, field.default)
 	lines.unshift(str);
-	lines.push('<div class="mkm-body">')
 	lines = lines.concat(renderBody(field.body));
-	lines.push('</div>')
 	lines.push('')
 	return lines 
 }
@@ -119,9 +117,10 @@ const renderType = (type, filenames, keyname, config) => {
 	}
 }
 
-const renderInfo = (tags, info) => {
+const renderInfo = (tags, info, def) => {
 	if((!tags || tags.length <= 0) && 
-		(!info || Object.keys(info) <= 0)){
+		(!info || Object.keys(info) <= 0 ) &&
+		!def){
 			return [];
 	}
 	let lines = ['<div class="mkm-info">'];
@@ -132,8 +131,15 @@ const renderInfo = (tags, info) => {
 		})
 		lines.push('</div>')
 	}
-	if(info && Object.keys(info).length > 0) {
-		Object.keys(info).map(key => {
+	info = info || {};
+	let infoKeys = Object.keys(info);
+	if(def) {
+		info.default = '<code>'+def+'</code>'
+		infoKeys.unshift('default');
+	}
+	console.log(info)
+	if(Object.keys(info).length > 0 ) {
+		infoKeys.map(key => {
 			lines = lines.concat([
 				'<div class="mkm-info-pair">',
 				'<div class="mkm-info-key">'+key+'</div>',

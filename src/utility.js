@@ -15,7 +15,6 @@ const getFileIndent = lines => {
 			else spaces++;
 		}
 		let diff = Math.abs(len - last);
-		console.log(diff);
 		last = len;
 		if(diff != 0) indents[diff] = (indents[diff] || 0) + 1;
 		
@@ -28,8 +27,6 @@ const getFileIndent = lines => {
 			num = key;
 		}
 	}
-	console.log(tabs);
-	console.log(max);
 	return (spaces >= tabs ? ' ':"\t").repeat(num)
 };
 

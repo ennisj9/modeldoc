@@ -155,7 +155,6 @@ const parseComment = lines => {
 			comment.body.push(line)
 		}
 	})
-	console.log(comment);
 	return comment;
 }
 
@@ -165,7 +164,6 @@ const parseFile = async filename => {
 	const file = await fs.promises.readFile(filename)
 	let raw_lines = toLines(file.toString())
 	let indent = getFileIndent(raw_lines)
-	console.log(indent.length);
 	let { lines, comments } = stripComments(raw_lines)
 	let classes = extractClasses(lines, indent)
 	let fieldsByName = {}
