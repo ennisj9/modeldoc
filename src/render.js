@@ -18,7 +18,7 @@ const renderMarkdowns = (classes, config) => {
 		let page = renderPage(cl, filenames, config);
 		fs.writeFileSync(filenames[cl.name], page);
 	})
-	renderDependencies(classes, config)
+	if(config.includeDependencies) renderDependencies(classes, config)
 }
 
 const copyCss = docDirectory => {
@@ -185,7 +185,7 @@ const writeMkdocsConfig = (classes, config) => {
 		modelBin.push({[cl.name]: config.docModelDirectory + toSnake(cl.name)+'.md'})
 	})
 	ensureYamlListItem(mkconfig.nav, config.navFolder, modelBin);
-	ensureYamlListItem(mkconfig.nav, 'Model dependencies', 'model_dependencies.md');
+	if(config.includeDependencies) ensureYamlListItem(mkconfig.nav, 'Model dependencies', 'model_dependencies.md');
 	if(!mkconfig.extra_css) mkconfig.extra_css = [];
 	ensureYamlListItem(mkconfig.extra_css, 'css/mkmodel.css');
 
