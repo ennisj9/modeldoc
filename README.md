@@ -24,10 +24,8 @@ government such as that of a city or a town.
 
 ```
 becomes
-<style>
-img[alt=town] { width: 600px; border: 1px solid #DDD}
-</style>
-![town](https://ennisj9.github.io/modeldoc/material-town.png)
+
+<img src="https://ennisj9.github.io/modeldoc/material-town.png" width=600 style="border: 1px solid #DDD" />
 
 ## Usage
 From within the project folder:
