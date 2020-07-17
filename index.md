@@ -24,10 +24,8 @@ government such as that of a city or a town.
 
 ```
 becomes
-<style>
-img[alt=town] { width: 600px; border: 1px solid #DDD}
-</style>
-![town](https://ennisj9.github.io/modeldoc/material-town.png)
+
+<img src="https://ennisj9.github.io/modeldoc/material-town.png" width=600 style="border: 1px solid #DDD" />
 
 ## Usage
 From within the project folder:
@@ -93,12 +91,13 @@ docModelDirectory: models/,
 navFolder: Models,
 mkdocsFile: mkdocs,
 includeDependencies: true
+dependenciesTitle: Model dependencies
 ```
+
 - inputDirectory: where modeldoc expects to find the .py model files, relative to project
 - docDirectory: mkdocs source directory relative to project
 - docModelDirectory: output model directory relative to doc directory
 - navFolder: directory within mkdocs navigation for models
 - mkdocsFile: filename of mkdocs yaml file
-
-
-
+- includeDependencies: whether or not to create a dependency graph page
+- dependenciesTitle: title of dependencies graph page
