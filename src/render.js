@@ -170,13 +170,13 @@ const ensureYamlListItem = (list, label, val) => {
 
 const writeMkdocsConfig = (classes, config) => {
 	let mkconfig;
-	let output = config.mkdocsFile + '.yml'
+	let output = config.mkdocsFile
 	try{
-		mkconfig = yaml.load(fs.readFileSync(config.mkdocsFile + '.yml').toString());
+		mkconfig = yaml.load(fs.readFileSync(config.mkdocsFile).toString());
 	} catch(e){
 		console.log('Could not load mkdocs file: ' + config.mkdocsFile)
 		mkconfig = {};
-		output = config.mkdocsFile + '_nav.yml'
+		output = config.mkdocsFile.replace('.yml','') + '_nav.yml'
 	}
 	let modelBin = [];
 	if(!mkconfig.nav) mkconfig.nav = [];

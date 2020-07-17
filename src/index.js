@@ -10,18 +10,21 @@ const config = {
 	docDirectory: 'docs/',
 	docModelDirectory: 'models/',
 	navFolder: 'Models',
-	mkdocsFile: 'mkdocs',
+	mkdocsFile: 'mkdocs.yml',
 	includeDependencies: true,
 	dependenciesTitle: 'Model dependencies'
 }
 
 try {
-	let confFile = fs.readFileSync('modeldoc.yaml').toString();
+	let confFile = fs.readFileSync('modeldoc.yml').toString();
 	let conf = yaml.load(confFile);
+	for(let key in conf){
+		if(!config[key]) console.log('Unrecognized key "'+key+'" in modeldoc.yml')
+	}
 	Object.assign(config, conf);
 }
 catch(e) {
-	console.log('No modeldoc.yaml config file loaded.')
+	console.log('No modeldoc.yml config file loaded.')
 }
 
 const save = obj => {
@@ -79,7 +82,7 @@ const run = async () => {
 		let classes = await parseFile(Path.join(input, file))
 		classes.map(cl => allClasses.push(cl))
 	}
-	save(allClasses);
+	//save(allClasses); // for debug
 	prepareDirectories(config);
 	establishRelationships(allClasses);
 	renderMarkdowns(allClasses, config)
