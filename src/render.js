@@ -137,7 +137,6 @@ const renderInfo = (tags, info, def) => {
 		info.default = '<code>'+def+'</code>'
 		infoKeys.unshift('default');
 	}
-	console.log(info)
 	if(Object.keys(info).length > 0 ) {
 		infoKeys.map(key => {
 			lines = lines.concat([
@@ -185,7 +184,7 @@ const writeMkdocsConfig = (classes, config) => {
 		modelBin.push({[cl.name]: config.docModelDirectory + toSnake(cl.name)+'.md'})
 	})
 	ensureYamlListItem(mkconfig.nav, config.navFolder, modelBin);
-	if(config.includeDependencies) ensureYamlListItem(mkconfig.nav, 'Model dependencies', 'model_dependencies.md');
+	if(config.includeDependencies) ensureYamlListItem(mkconfig.nav, config.dependenciesTitle, 'model_dependencies.md');
 	if(!mkconfig.extra_css) mkconfig.extra_css = [];
 	ensureYamlListItem(mkconfig.extra_css, 'css/mkmodel.css');
 
@@ -195,7 +194,7 @@ const writeMkdocsConfig = (classes, config) => {
 }
 
 const renderDependencies = (classes, config) => {
-	let page = '# Model dependencies\n<div />';
+	let page = `# ${config.dependenciesTitle}\n<div />`;
 	let roots = classes.filter(cl => cl.featuredBy.length <= 0);
 	
 	const renderClass = cl => {

@@ -91,12 +91,13 @@ docModelDirectory: models/,
 navFolder: Models,
 mkdocsFile: mkdocs,
 includeDependencies: true
+dependenciesTitle: Model dependencies
 ```
+
 - inputDirectory: where modeldoc expects to find the .py model files, relative to project
 - docDirectory: mkdocs source directory relative to project
 - docModelDirectory: output model directory relative to doc directory
 - navFolder: directory within mkdocs navigation for models
 - mkdocsFile: filename of mkdocs yaml file
-
-
-
+- includeDependencies: whether or not to create a dependency graph page
+- dependenciesTitle: title of dependencies graph page

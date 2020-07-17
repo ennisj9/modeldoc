@@ -11,7 +11,8 @@ const config = {
 	docModelDirectory: 'models/',
 	navFolder: 'Models',
 	mkdocsFile: 'mkdocs',
-	includeDependencies: true
+	includeDependencies: true,
+	dependenciesTitle: 'Model dependencies'
 }
 
 try {
