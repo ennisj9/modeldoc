@@ -82,14 +82,14 @@ Generated during ``create_user()``
 The tag or key-value lines are optional but need to come before the description body. Everything after the "header" (name, tags, key-values) will be considered the description. Each field or value needs to be placed in it's own separate comment.
 
 ## Configuration
-Modeldoc can be configured by creating a ``modeldoc.yaml`` file in the project directory. The default values are:
+Modeldoc can be configured by creating a ``modeldoc.yml`` file in the project directory. The default values are:
 
 ```
-inputDirectory: models/,
-docDirectory: docs/,
-docModelDirectory: models/,
-navFolder: Models,
-mkdocsFile: mkdocs,
+inputDirectory: models/
+docDirectory: docs/
+docModelDirectory: models/
+navFolder: Models
+mkdocsFile: mkdocs
 includeDependencies: true
 dependenciesTitle: Model dependencies
 ```
