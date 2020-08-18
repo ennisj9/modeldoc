@@ -94,7 +94,7 @@ const renderType = (type, filenames, keyname, config) => {
 		if(keyname) key = 
 			'<span class="mkm-keyname"><span class="mkm-recessed">&lt;</span>'
 			+ keyname
-			+'<span class="mkm-recessed">&gt;</span>'
+			+'<span class="mkm-recessed">&gt;</span></span>'
 		else key = rt(type.args[0])
 		return '<span class="mkm-bracket">{</span> ' 
 			+ key + ' : '
