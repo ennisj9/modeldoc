@@ -34,8 +34,8 @@ const renderPage = (cls, filenames, config) => {
 	return page;
 }
 
-const linkModel = (model, config) => {
-	return '['+model+'](../../'+config.docModelDirectory+toSnake(model)+')';
+const linkModel = (model, config, includeModelDir) => {
+	return `[${model}](../${includeModelDir ? config.docModelDirectory :''}${toSnake(model)})`
 }
 
 const toSet = arr => Array.from(new Set(arr)).sort();
@@ -199,7 +199,7 @@ const renderDependencies = (classes, config) => {
 	
 	const renderClass = cl => {
 		let str = 
-			'<span class="mkm-depclass">'+linkModel(cl.name, config)+'</span>\n'
+			'<span class="mkm-depclass">'+linkModel(cl.name, config, true)+'</span>\n'
 			+ '<div class="mkm-depblock">\n';
 		cl.features.map(feature => {
 			str += feature[0] + ' : ' + renderClass(feature[1]);
