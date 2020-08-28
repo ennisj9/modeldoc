@@ -1,6 +1,6 @@
 {
   "name": "modeldoc",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Auto generates mkdocs from python model files.",
   "main": "src/index.js",
   "author": "Joe Ennis",
