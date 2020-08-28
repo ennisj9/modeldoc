@@ -18,7 +18,7 @@ const renderMarkdowns = (classes, config) => {
 		let page = renderPage(cl, filenames, config);
 		fs.writeFileSync(filenames[cl.name], page);
 	})
-	if(config.includeDependencies) renderDependencies(classes, config)
+	renderDependencies(classes, config)
 }
 
 const copyCss = docDirectory => {
@@ -35,7 +35,7 @@ const renderPage = (cls, filenames, config) => {
 }
 
 const linkModel = (model, config) => {
-	return '['+model+'](/'+config.docModelDirectory+toSnake(model)+')';
+	return '['+model+'](../../'+config.docModelDirectory+toSnake(model)+')';
 }
 
 const toSet = arr => Array.from(new Set(arr)).sort();
