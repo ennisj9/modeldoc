@@ -20,7 +20,7 @@ try {
 	let confFile = fs.readFileSync('modeldoc.yml').toString();
 	let conf = yaml.load(confFile);
 	for(let key in conf){
-		if(!config[key]) console.log('Unrecognized key "'+key+'" in modeldoc.yml')
+		if(Object.keys(config).indexOf(key) < 0) console.log('Unrecognized key "'+key+'" in modeldoc.yml')
 	}
 	Object.assign(config, conf);
 }
