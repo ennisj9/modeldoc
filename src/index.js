@@ -12,7 +12,8 @@ const config = {
 	navFolder: 'Models',
 	mkdocsFile: 'mkdocs.yml',
 	includeDependencies: true,
-	dependenciesTitle: 'Model dependencies'
+	dependenciesTitle: 'Model dependencies',
+	outputFile: null
 }
 
 try {
@@ -27,8 +28,8 @@ catch(e) {
 	console.log('No modeldoc.yml config file loaded.')
 }
 
-const save = obj => {
-	fs.writeFileSync('output.json', JSON.stringify(obj, null, '  '))
+const save = (obj, file) => {
+	fs.writeFileSync(file, JSON.stringify(obj, null, '  '))
 }
 
 const prepareDirectories = config => {
@@ -82,7 +83,9 @@ const run = async () => {
 		let classes = await parseFile(Path.join(input, file))
 		classes.map(cl => allClasses.push(cl))
 	}
-	//save(allClasses); // for debug
+	if(config.outputFile){
+		save(allClasses, config.outputFile)
+	}
 	prepareDirectories(config);
 	establishRelationships(allClasses);
 	renderMarkdowns(allClasses, config)

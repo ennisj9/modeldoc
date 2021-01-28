@@ -92,6 +92,7 @@ navFolder: Models
 mkdocsFile: mkdocs
 includeDependencies: true
 dependenciesTitle: Model dependencies
+outputFile: null
 ```
 
 - inputDirectory: where modeldoc expects to find the .py model files, relative to project
@@ -101,3 +102,4 @@ dependenciesTitle: Model dependencies
 - mkdocsFile: filename of mkdocs yaml file
 - includeDependencies: whether or not to create a dependency graph page
 - dependenciesTitle: title of dependencies graph page
+- outputFile: generate a JSON file with data extracted from the .py model files
