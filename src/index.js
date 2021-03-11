@@ -52,7 +52,7 @@ const prepareDirectories = config => {
 	})
 }
 
-const establishRelationships = classes => {
+const establishRelationships = (classes, deep) => {
 	let byName = {}
 	classes.map(cl => {
 		byName[cl.name] = cl;
@@ -63,8 +63,8 @@ const establishRelationships = classes => {
 		const visitType = (field, type) => {
 			if(type.type) type.args.map(a => visitType(field, a))
 			else if(byName[type]) {
-				byName[type].featuredBy.push([field, cl])
-				cl.features.push([field, byName[type]])
+				byName[type].featuredBy.push([field, deep ? cl : cl.name])
+				cl.features.push([field, deep ? byName[type] : byName[type].name])
 			}
 		}
 		cl.fields.map(field => {
@@ -83,11 +83,13 @@ const run = async () => {
 		let classes = await parseFile(Path.join(input, file))
 		classes.map(cl => allClasses.push(cl))
 	}
-	establishRelationships(allClasses);
+
+	establishRelationships(allClasses, false);
 	if(config.outputFile){
 		save(allClasses, config.outputFile)
 	}
 	prepareDirectories(config);
+	establishRelationships(allClasses, true);
 	renderMarkdowns(allClasses, config)
 	writeMkdocsConfig(allClasses, config)
 }

@@ -22,7 +22,7 @@ const stripComments = lines => {
 	return {lines: rest, comments}
 }
 
-const classRegEx = /^(\s*)class ([^\(]+)\(.*\).*:/;
+const classRegEx = /^(\s*)class ([^\(]+)\(?.*\)?.*:/;
 
 const isClassDefinition = line => {
 	let res = classRegEx.exec(line)
