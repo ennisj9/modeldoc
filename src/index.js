@@ -83,11 +83,11 @@ const run = async () => {
 		let classes = await parseFile(Path.join(input, file))
 		classes.map(cl => allClasses.push(cl))
 	}
+	establishRelationships(allClasses);
 	if(config.outputFile){
 		save(allClasses, config.outputFile)
 	}
 	prepareDirectories(config);
-	establishRelationships(allClasses);
 	renderMarkdowns(allClasses, config)
 	writeMkdocsConfig(allClasses, config)
 }
